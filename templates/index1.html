@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home page</title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+    <body>
+        <header>
+            <section class="wrapper one">
+                <h1 class="left">
+                    <a href="">
+                        <img src="{% static 'images/logo.png' %}" alt="" />
+                    </a>
+                </h1>
+                <div class="right">
+                    {% if request.user.is_authenticated  %}
+                    <span>{{request.user.first_name}} {{request.user.last_name}}</span>
+                    <a href="{% url 'users:logout' %}" class="login">Logout</a>
+                    {% else %}
+                    <a href="{% url 'users:login' %}" class="login">Login</a>
+                    {% endif %}
+                </div>
+            </section>
+        </header>
+    </body>
+</html>

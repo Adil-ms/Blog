@@ -1,0 +1,15 @@
+from django.contrib import admin
+from posts.models import Author, Category, Post
+# Register your models here.
+
+
+class AuthorAdmin(admin.ModelAdmin):
+    list_display = ('name', 'user')
+
+
+class PostAdmin(admin.ModelAdmin):
+    list_display = ('title', 'author','published_date', 'short_description')
+
+admin.site.register(Author)
+admin.site.register(Category)
+admin.site.register(Post, PostAdmin)
